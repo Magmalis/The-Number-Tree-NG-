@@ -1,19 +1,20 @@
 let modInfo = {
-	name: "The Modding Tree",
-	id: "mymod",
-	author: "",
+	name: "The Number Tree NG-",
+	id: "numberrrrrrrrrrrrrrrrrrnggggggggggg----11111+++",
+	author: "Original Idea: 3^3=7 NG-: Magmalis",
 	pointsName: "points",
+	modFiles: ["numberl.js", "el.js", "factor.js", "tree.js"],
+
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new ExpantaNum (10), // Used for hard resets and new players
-	
+	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
 // Set your version in num and name
 let VERSION = {
 	num: "0.0",
-	name: "",
+	name: "Literally nothing",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
@@ -28,7 +29,7 @@ let winText = `Congratulations! You have reached the end and beaten this game, b
 var doNotCallTheseFunctionsEveryTick = ["blowUpEverything"]
 
 function getStartPoints(){
-    return new ExpantaNum(modInfo.initialStartPoints)
+    return new Decimal(modInfo.initialStartPoints)
 }
 
 // Determines if it should show points/sec
@@ -39,9 +40,19 @@ function canGenPoints(){
 // Calculate points/sec!
 function getPointGen() {
 	if(!canGenPoints())
-		return new ExpantaNum(0)
+		return new Decimal(0)
 
-	let gain = new ExpantaNum(1)
+	let gain = new Decimal(1)
+if (hasUpgrade('n', 11)) gain = gain.div(3)
+if (hasUpgrade('n', 12)) gain = gain.times(4)
+if (hasUpgrade("n", 13)) gain = gain.mul(upgradeEffect("n", 13))
+if (hasUpgrade("n", 14)) gain = gain.mul(upgradeEffect("n", 14))
+if (hasUpgrade('n', 15)) gain = gain.div(3)
+if (hasUpgrade('n', 21)) gain = gain.times(9)
+if (hasUpgrade('n', 16)) gain = gain.times(5)
+if (hasUpgrade("i", 11)) gain = gain.mul(upgradeEffect("i", 11))
+if (hasUpgrade("i", 12)) gain = gain.mul(upgradeEffect("i", 12))
+if (hasUpgrade("i", 13)) gain = gain.times(3)
 	return gain
 }
 
@@ -55,12 +66,17 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return false
+	return player.points.gte(new Decimal("e280000000"))
 }
 
 
 
 // Less important things beyond this point!
+
+// Style for the background, can be a function
+var backgroundStyle = {
+
+}
 
 // You can change this if you have things that can be messed up by long tick lengths
 function maxTickLength() {

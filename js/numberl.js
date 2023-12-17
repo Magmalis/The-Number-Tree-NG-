@@ -66,6 +66,7 @@ unlocked(){return hasUpgrade("n", 21)},
 	cost: new Decimal(2),
 unlocked(){return hasUpgrade("n", 15)},
 },
-}
+},
+
 
 })
